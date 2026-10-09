@@ -6,8 +6,8 @@ addLayer("s", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#0eda67",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    color: "#53ff1a",
+    requires: new Decimal(8), // Can be a function that takes requirement increases into account
     resource: "shrubs", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -24,5 +24,17 @@ addLayer("s", {
     hotkeys: [
         {key: "s", description: "S: Reset for shrubs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},
+    upgrades: {
+        11: {
+            title: "Bit",
+            description: "A simple +2 to seed gain.",
+            cost: new Decimal(1),
+        },
+        12: {
+            title: "Sow the seeds",
+            description: "Mathematical! x(√2) to seed gain",
+            cost: new Decimal(4),
+        },
+    },
 })

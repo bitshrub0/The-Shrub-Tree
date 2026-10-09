@@ -1,12 +1,12 @@
 let modInfo = {
 	name: "The Shrub Tree",
 	author: "Bitshrub0",
-	pointsName: "points",
+	pointsName: "seeds",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "Bitshrub Random Chaos",
 	discordLink: "link",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 72,  // In hours
 }
 
@@ -42,6 +42,8 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('s', 11)) gain = gain.add(2)
+	if (hasUpgrade('s', 12)) gain = gain.times(1.41421356)
 	return gain
 }
 
@@ -55,7 +57,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1.79e308"))
+	return player.points.gte(new Decimal("1e10"))
 }
 
 
