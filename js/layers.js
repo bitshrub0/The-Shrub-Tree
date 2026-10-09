@@ -19,7 +19,9 @@ addLayer("s", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+        if (hasUpgrade('s', 23)) exp = exp.times(3.1415926536)
+            return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -76,7 +78,7 @@ addLayer("s", {
             },
             cost: new Decimal(144),
             effect() {
-            return player.points.add(1).log(3.5).add(1).times(1.3)
+            return player.points.add(1).log(3.5).add(10).times(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -86,9 +88,17 @@ addLayer("s", {
             cost: new Decimal(1111),
         },
         23: {
-            title: "Gwa Reference",
-            description: "x96 to seed gain!!",
-            cost: new Decimal(1111),
+            title: "This is the last mathematical constant, trust",
+            description: "^π to shrub gain!",
+            tooltip() { 
+            return "^3.1415926536"
+            },
+            cost: new Decimal(31416),
+        },
+        31: {
+            title: "Warp Factor",
+            description: "+6 to seed gain BEFORE ALL OTHER EFFECTS!",
+            cost: new Decimal(4e13),
         },
     },
 })
