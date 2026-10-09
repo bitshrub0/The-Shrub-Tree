@@ -19,9 +19,9 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.00</h3><br>
 		- Added shrubs.<br>
-		- Added stuff.`
+		- Added shrub upgrades.`
 
-let winText = `Well. That wasn't very hard... For now, at least.`
+let winText = `Well. That wasn't very hard... For now, at least. More soon!`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -42,6 +42,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('s', 32)) gain = gain.times(6)
 	if (hasUpgrade('s', 31)) gain = gain.add(6)
 	if (hasUpgrade('s', 11)) gain = gain.add(2)
 	if (hasUpgrade('s', 12)) gain = gain.times(1.4142135624)
@@ -50,6 +51,8 @@ function getPointGen() {
 	if (hasUpgrade('s', 15)) gain = gain.times(upgradeEffect("s", 15))
 	if (hasUpgrade('s', 21)) gain = gain.times(upgradeEffect("s", 21))
 	if (hasUpgrade('s', 22)) gain = gain.times(96)
+	if (hasUpgrade('s', 41)) gain = gain.times(616)
+	if (hasUpgrade('s', 51)) gain = gain.pow(5.555)
 	return gain
 }
 
@@ -63,7 +66,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e10"))
+	return player.points.gte(new Decimal("5.7e57"))
 }
 
 

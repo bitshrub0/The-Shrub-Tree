@@ -35,6 +35,7 @@ addLayer("s", {
             cost: new Decimal(1),
         },
         12: {
+            unlocked() { return hasUpgrade("s", 11) },
             title: "Sow the seeds",
             description: "Mathematical! x(√2) to seed gain",
             tooltip() { 
@@ -43,6 +44,7 @@ addLayer("s", {
             cost: new Decimal(4),
         },
         13: {
+            unlocked() { return hasUpgrade("s", 12) },
             title: "Grow the seeds",
             description: "More mathematical!! x(φ) to seed gain, heh heh.",
             tooltip() { 
@@ -51,6 +53,7 @@ addLayer("s", {
             cost: new Decimal(8),
         },
         14: {
+            unlocked() { return hasUpgrade("s", 13) },
             title: "Harvesting",
             description: "This one is more relevant: x(𝑒) to seed gain.",
             tooltip() { 
@@ -59,6 +62,7 @@ addLayer("s", {
             cost: new Decimal(15),
         },
         15: {
+            unlocked() { return hasUpgrade("s", 14) },
             title: "Reap what thou sow'st",
             description: "Inflation Time - shrubs boost seed gain!",
             tooltip() { 
@@ -71,10 +75,11 @@ addLayer("s", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         21: {
+            unlocked() { return hasUpgrade("s", 15) },
             title: "Enough with the plant jokes!!",
             description: "Seed gain boosts itself!",
             tooltip() { 
-            return "((log3.5(seeds+1))+1)*1.3"
+            return "((log3.5(seeds+1))+1)*0.15"
             },
             cost: new Decimal(144),
             effect() {
@@ -83,11 +88,13 @@ addLayer("s", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         22: {
+            unlocked() { return hasUpgrade("s", 21) },
             title: "Gwa Reference",
             description: "x96 to seed gain!!",
-            cost: new Decimal(1111),
+            cost: new Decimal(696),
         },
         23: {
+            unlocked() { return hasUpgrade("s", 22) },
             title: "This is the last mathematical constant, trust",
             description: "^π to shrub gain!",
             tooltip() { 
@@ -96,9 +103,28 @@ addLayer("s", {
             cost: new Decimal(31416),
         },
         31: {
+            unlocked() { return hasUpgrade("s", 23) },
             title: "Warp Factor",
             description: "+6 to seed gain BEFORE ALL OTHER EFFECTS!",
-            cost: new Decimal(4e13),
+            cost: new Decimal(4e12),
+        },
+        32: {
+            unlocked() { return hasUpgrade("s", 31) },
+            title: "Factor Warp",
+            description: "x6 to seed gain BEFORE ALL OTHER EFFECTS!",
+            cost: new Decimal(1.4e14),
+        },
+        41: {
+            unlocked() { return hasUpgrade("s", 32) },
+            title: "Satanic Upgrade",
+            description: "x616 to seed gain",
+            cost: new Decimal(6.16e14),
+        },
+        51: {
+            unlocked() { return hasUpgrade("s", 41) },
+            title: "Ridiculous :P",
+            description: "^5.555 to seed gain",
+            cost: new Decimal(1e20),
         },
     },
 })
