@@ -13,8 +13,9 @@ addLayer("s", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+    gainMult() {
+        let mult = new Decimal(1)
+        if (hasUpgrade('s', 15)) mult = mult.times(upgradeEffect('s', 15))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -34,7 +35,60 @@ addLayer("s", {
         12: {
             title: "Sow the seeds",
             description: "Mathematical! x(√2) to seed gain",
+            tooltip() { 
+            return "*1.4142135624"
+            },
             cost: new Decimal(4),
+        },
+        13: {
+            title: "Grow the seeds",
+            description: "More mathematical!! x(φ) to seed gain, heh heh.",
+            tooltip() { 
+            return "*1.6180339887"
+            },
+            cost: new Decimal(8),
+        },
+        14: {
+            title: "Harvesting",
+            description: "This one is more relevant: x(𝑒) to seed gain.",
+            tooltip() { 
+            return "*2.7182818285"
+            },
+            cost: new Decimal(15),
+        },
+        15: {
+            title: "Reap what thou sow'st",
+            description: "Inflation Time - shrubs boost seed gain!",
+            tooltip() { 
+            return "log4(shrubs+1)+1"
+            },
+            cost: new Decimal(40),
+            effect() {
+            return player[this.layer].points.add(1).log(4).add(1)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        21: {
+            title: "Enough with the plant jokes!!",
+            description: "Seed gain boosts itself!",
+            tooltip() { 
+            return "((log3.5(seeds+1))+1)*1.3"
+            },
+            cost: new Decimal(144),
+            effect() {
+            return player.points.add(1).log(3.5).add(1).times(1.3)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        22: {
+            title: "Gwa Reference",
+            description: "x96 to seed gain!!",
+            cost: new Decimal(1111),
+        },
+        23: {
+            title: "Gwa Reference",
+            description: "x96 to seed gain!!",
+            cost: new Decimal(1111),
         },
     },
 })
