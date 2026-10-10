@@ -5,18 +5,21 @@ let modInfo = {
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "Bitshrub Random Chaos",
-	discordLink: "link",
+	discordLink: "https://discord.gg/PjUNcPMh2v",
 	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 72,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.00",
-	name: "Something! (Maybe)",
+	num: "0.01",
+	name: "Something!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+    v0.01<br>
+	    - Fixed points/seeds confusion<br>
+		- Discord link works now<br>
 	<h3>v0.00</h3><br>
 		- Added shrubs.<br>
 		- Added shrub upgrades.`
@@ -62,6 +65,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	"Current Endgame: 5.7e57 seeds!"
 ]
 
 // Determines when the game "ends"
